@@ -1,7 +1,5 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-
 import 'listview_widget.dart';
 
 void main() => runApp(MyApp());
