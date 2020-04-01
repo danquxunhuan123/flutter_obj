@@ -8,7 +8,7 @@ class GridWidget extends StatelessWidget {
 
   _getGridView() {
     return Container(
-      margin: EdgeInsets.only(top: 10.0),
+      margin: EdgeInsets.only(top: 5.0),
       child: Column(
         children: <Widget>[
           _getRow(),

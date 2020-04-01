@@ -1,22 +1,49 @@
 import 'package:flutter/material.dart';
-import 'swipe_widget.dart';
+import 'package:myapp/home/dao/home_dao.dart';
+import 'package:myapp/inter/http_interface.dart';
+import 'package:myapp/model/home_model.dart';
 import 'grid_widget.dart';
+import 'swipe_widget.dart';
 
-class ListViewWidget extends StatelessWidget {
+class ListViewWidget extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return _getListView();
+  State<StatefulWidget> createState() {
+    return _ListViewWidgetState();
+  }
+}
+
+class _ListViewWidgetState extends State<ListViewWidget>
+    implements HttpInterface {
+  HomeChannelModel _homeModel;
+
+  @override
+  void initState() {
+    super.initState();
+    HomeDao.fetchHomeData(this);
   }
 
-  Widget _getListView() {
+  @override
+  void onSuccess(Object model) {
+    setState(() {
+      _homeModel = model;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _homeModel != null
+        ? _getListView(_homeModel)
+        : Container(width: 0.0, height: 0.0);
+  }
+
+  Widget _getListView(HomeChannelModel homeModel) {
     return Container(
       color: Colors.white,
       child: ListView(
-        padding:
-            const EdgeInsetsDirectional.only(start: 10.0, top: 10.0, end: 10.0),
+        padding: EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
         children: <Widget>[
           _getSearchItem(),
-          SwipeWidget(),
+          SwipeWidget(homeModel.channelList[0].channelList[0]),
           GridWidget(),
           _getListViewItem(),
           _getListViewItemNormal(),

@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'listview_widget.dart';
+import 'package:myapp/home/widget/listview_widget.dart';
 
 void main() => runApp(MyApp());
 
@@ -49,13 +49,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        child: AppBar(
-          title: const Text('BottomNavigationBar Sample'),
-        ),
-        preferredSize: Size.fromHeight(0),
+//      appBar:AppBar(
+//        title: const Text('BottomNavigationBar Sample'),
+//      ),
+      body: Padding(
+        padding: EdgeInsets.only(top: 30.0),
+        child: _widgetOptions[_selectedIndex],
       ),
-      body: _widgetOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
