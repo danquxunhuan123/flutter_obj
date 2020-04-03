@@ -16,7 +16,7 @@ class SwipeWidget extends StatefulWidget {
   }
 }
 
-class _SwipeWidgetState extends State<SwipeWidget> implements HttpInterface {
+class _SwipeWidgetState extends State<SwipeWidget>{
   List<ListDatas> _bannerData;
   String _url;
 
@@ -25,11 +25,10 @@ class _SwipeWidgetState extends State<SwipeWidget> implements HttpInterface {
   @override
   void initState() {
     super.initState();
-    HomeDao.fetchBannerData(_url, this);
+    HomeDao.fetchBannerData(_url, HttpInterface(onSuccess: onBannerDataSuccess));
   }
 
-  @override
-  void onSuccess(Object model) {
+  onBannerDataSuccess(Object model){
     setState(() {
       BannerModel banner = model;
       _bannerData = banner.listDatas;

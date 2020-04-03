@@ -2,6 +2,7 @@ import 'package:myapp/http/http_util.dart';
 import 'package:myapp/inter/http_interface.dart';
 import 'package:myapp/model/banner_model.dart';
 import 'package:myapp/model/home_model.dart';
+import 'package:myapp/model/list_item_model.dart';
 
 class HomeDao{
   static fetchHomeData(HttpInterface interface){
@@ -9,8 +10,6 @@ class HomeDao{
         .then((Map<String, dynamic> map){
       interface.onSuccess(HomeChannelModel.fromJson(map));
     });
-
-//    return null;
   }
 
   static fetchBannerData(String url,HttpInterface interface){
@@ -18,7 +17,12 @@ class HomeDao{
         .then((Map<String, dynamic> map){
       interface.onSuccess(BannerModel.fromJson(map));
     });
+  }
 
-//    return null;
+  static fetchListData(String url,HttpInterface interface){
+    HttpUtils.fetchData(url)
+        .then((Map<String, dynamic> map){
+      interface.onSuccess(ListItemModel.fromJson(map));
+    });
   }
 }
