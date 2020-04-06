@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:myapp/home/dao/home_dao.dart';
+import 'package:myapp/pages/dao/home_dao.dart';
 import 'package:myapp/inter/http_interface.dart';
 import 'package:myapp/model/banner_model.dart';
 import 'package:myapp/model/home_model.dart';
@@ -43,6 +43,7 @@ class _SwipeWidgetState extends State<SwipeWidget>{
   }
 
   _swiper(List<ListDatas> bannerData) {
+    var lines = _indicators(bannerData);
     return Column(
       children: <Widget>[
         AspectRatio(
@@ -54,7 +55,7 @@ class _SwipeWidgetState extends State<SwipeWidget>{
               itemCount: bannerData.length,
               autoplay: true),
         ),
-        _indicators(bannerData)
+        lines
       ],
     );
   }

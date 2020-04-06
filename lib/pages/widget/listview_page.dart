@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/home/widget/list_widget.dart';
+import 'package:myapp/pages/widget/list_widget.dart';
 import 'package:myapp/model/home_model.dart';
 
 import 'grid_widget.dart';

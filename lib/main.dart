@@ -1,9 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:myapp/home/dao/home_dao.dart';
-import 'package:myapp/home/widget/listview_page.dart';
 import 'package:myapp/inter/http_interface.dart';
 import 'package:myapp/model/home_model.dart';
+import 'package:myapp/pages/dao/home_dao.dart';
+import 'package:myapp/pages/detail_page.dart';
+import 'package:myapp/pages/widget/listview_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +15,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
-      home: MyStatefulWidget(),
+      initialRoute: '/',
+//      home: MyStatefulWidget(),
+      routes: {
+        '/': (content) => MyStatefulWidget(),
+        DetailPage.routeName: (content) => DetailPage(),
+      },
     );
   }
 }
@@ -79,7 +85,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           )
         : Container(width: 0.0, height: 0.0);
   }
-
 
 //  var navigatorViews = Map();
   _navigationItem(index) {
