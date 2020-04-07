@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/dao/home_dao.dart';
+import 'package:myapp/dao/home_dao.dart';
 import 'package:myapp/inter/http_interface.dart';
 import 'package:myapp/model/home_model.dart';
 import 'package:myapp/model/list_item_model.dart';
@@ -68,7 +68,13 @@ class _ListWidgetState extends State<ListWidget> {
                         fontSize: 16.0,
                         fontWeight: FontWeight.bold),
                   ),
-                  RaisedButton(
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (content) => WebViewExample()));
+                    },
 //                    onPressed: () {
 //                      Navigator.pushNamed(context, DetailPage.routeName,
 //                          arguments: cname);
@@ -87,10 +93,8 @@ class _ListWidgetState extends State<ListWidget> {
 
   _getListViewItemNormal(List<ListDatas> list) {
     return list.map((item) {
-      return RaisedButton(
-        color: Colors.white,
-        shape: Border.all(style: BorderStyle.none),
-        onPressed: () {
+      return GestureDetector(
+        onTap: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (content) => WebViewExample()));
 //          Navigator.pushNamed(context, DetailPage.routeName,

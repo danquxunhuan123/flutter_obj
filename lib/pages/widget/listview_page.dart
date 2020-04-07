@@ -6,9 +6,9 @@ import 'grid_widget.dart';
 import 'swipe_widget.dart';
 
 class ListViewPage extends StatefulWidget {
-  final ChannelList _channelList;
+  final ChannelList channelList;
 
-  ListViewPage(this._channelList);
+  ListViewPage({this.channelList});
 
   @override
   State<StatefulWidget> createState() {
@@ -20,8 +20,8 @@ class _ListViewPageState extends State<ListViewPage> {
 
   @override
   Widget build(BuildContext context) {
-    return widget._channelList != null
-        ? _getListView(widget._channelList)
+    return widget.channelList != null
+        ? _getListView(widget.channelList)
         : Container(width: 0.0, height: 0.0);
   }
 

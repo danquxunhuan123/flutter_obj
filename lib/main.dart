@@ -2,8 +2,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:myapp/inter/http_interface.dart';
 import 'package:myapp/model/home_model.dart';
-import 'package:myapp/pages/dao/home_dao.dart';
+import 'package:myapp/dao/home_dao.dart';
 import 'package:myapp/pages/detail_page.dart';
+import 'package:myapp/pages/user/user_page.dart';
 import 'package:myapp/pages/widget/listview_page.dart';
 
 void main() => runApp(MyApp());
@@ -48,11 +49,18 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     });
   }
 
+//  Map<int, Widget> homeWidgets = {
+//    0: ListViewPage(),
+//    1: Text('Index 1: Business',
+//        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+//    2: UserPageWidget()
+//  };
+
   void _onItemTapped(int index) {
     if (_selectedIndex == index) return;
-    setState(() {
-      _selectedIndex = index;
-    });
+      setState(() {
+        _selectedIndex = index;
+      });
   }
 
   @override
@@ -75,7 +83,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.school),
-                  title: Text('School'),
+                  title: Text('user'),
                 ),
               ],
               currentIndex: _selectedIndex,
@@ -91,18 +99,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     switch (index) {
       case 0:
         return _homeModel != null
-            ? ListViewPage(_homeModel.channelList[0])
+            ? ListViewPage(channelList: _homeModel.channelList[0])
             : Container(width: 0.0, height: 0.0);
       case 1:
-        return Text(
-          'Index 1: Business',
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-        );
+        return Text('Index 1: Business',
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold));
       case 2:
-        return Text(
-          'Index 2: School',
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-        );
+        return UserPageWidget();
     }
   }
 }
