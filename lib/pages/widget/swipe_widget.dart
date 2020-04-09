@@ -29,8 +29,8 @@ class _SwipeWidgetState extends State<SwipeWidget>{
   }
 
   onBannerDataSuccess(Object model){
+    BannerModel banner = model;
     setState(() {
-      BannerModel banner = model;
       _bannerData = banner.listDatas;
     });
   }

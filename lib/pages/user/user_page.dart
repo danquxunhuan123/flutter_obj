@@ -75,8 +75,9 @@ class UserPageWidgetState extends State<UserPageWidget> {
         Positioned(
           child: GestureDetector(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (content) => SettingUser()));
+              Navigator.pushNamed(context,SettingUser.routeName);
+//              Navigator.push(context,
+//                  MaterialPageRoute(builder: (content) => SettingUser()));
             },
             child: Icon(Icons.settings),
           ),

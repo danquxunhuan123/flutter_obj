@@ -17,7 +17,6 @@ class ListViewPage extends StatefulWidget {
 }
 
 class _ListViewPageState extends State<ListViewPage> {
-
   @override
   Widget build(BuildContext context) {
     return widget.channelList != null
@@ -29,15 +28,32 @@ class _ListViewPageState extends State<ListViewPage> {
     List<ChannelList> channelList = homeModel.channelList;
     return Container(
       color: Colors.white,
-      child: ListView(
+      child: ListView.builder(
+        itemBuilder: (contxt, index) {
+          switch (index) {
+            case 0:
+              return _getSearchItem();
+            case 1:
+              return SwipeWidget(channelList[0]);
+            case 2:
+              return GridWidget(channelList[3]);
+            case 3:
+              return ListWidget(channelList[1]);
+            case 4:
+              return ListWidget(channelList[2]);
+          }
+
+          return Container();
+        },
+        itemCount: 5,
         padding: EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-        children: <Widget>[
-          _getSearchItem(),
-          SwipeWidget(channelList[0]),
-          GridWidget(channelList[3]),
-          ListWidget(channelList[1]),
-          ListWidget(channelList[2]),
-        ],
+//        children: <Widget>[
+//          _getSearchItem(),
+//          SwipeWidget(channelList[0]),
+//          GridWidget(channelList[3]),
+//          ListWidget(channelList[1]),
+//          ListWidget(channelList[2]),
+//        ],
       ),
     );
   }

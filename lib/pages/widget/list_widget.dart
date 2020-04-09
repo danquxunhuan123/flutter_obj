@@ -29,11 +29,6 @@ class _ListWidgetState extends State<ListWidget> {
   }
 
   onListDataSuccess(Object model) {
-//    Future.delayed(Duration(seconds: 1)).then((e){
-//      setState(() {
-//        _listItemModel = model;
-//      });
-//    });
     setState(() {
       _listItemModel = model;
     });
@@ -75,10 +70,6 @@ class _ListWidgetState extends State<ListWidget> {
                           MaterialPageRoute(
                               builder: (content) => WebViewExample()));
                     },
-//                    onPressed: () {
-//                      Navigator.pushNamed(context, DetailPage.routeName,
-//                          arguments: cname);
-//                    },
                     child: Icon(Icons.add_box),
                   )
                 ],
@@ -96,7 +87,7 @@ class _ListWidgetState extends State<ListWidget> {
       return GestureDetector(
         onTap: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (content) => WebViewExample()));
+              MaterialPageRoute(builder: (content) => DetailPage(item)));
 //          Navigator.pushNamed(context, DetailPage.routeName,
 //              arguments: item);
         },

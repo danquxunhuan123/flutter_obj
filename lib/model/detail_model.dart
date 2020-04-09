@@ -1,51 +1,27 @@
-class ListItemModel {
-  int _nowPage;
-  int _countPage;
-  String _date;
-  List<ListDatas> _listDatas;
+class DetailModel {
+  Datas _datas;
 
-  ListItemModel(
-      {int nowPage, int countPage, String date, List<ListDatas> listDatas}) {
-    this._nowPage = nowPage;
-    this._countPage = countPage;
-    this._date = date;
-    this._listDatas = listDatas;
+  DetailModel({Datas datas}) {
+    this._datas = datas;
   }
 
-  int get nowPage => _nowPage;
-  set nowPage(int nowPage) => _nowPage = nowPage;
-  int get countPage => _countPage;
-  set countPage(int countPage) => _countPage = countPage;
-  String get date => _date;
-  set date(String date) => _date = date;
-  List<ListDatas> get listDatas => _listDatas;
-  set listDatas(List<ListDatas> listDatas) => _listDatas = listDatas;
+  Datas get datas => _datas;
+  set datas(Datas datas) => _datas = datas;
 
-  ListItemModel.fromJson(Map<String, dynamic> json) {
-    _nowPage = json['nowPage'];
-    _countPage = json['countPage'];
-    _date = json['date'];
-    if (json['list_datas'] != null) {
-      _listDatas = new List<ListDatas>();
-      json['list_datas'].forEach((v) {
-        _listDatas.add(new ListDatas.fromJson(v));
-      });
-    }
+  DetailModel.fromJson(Map<String, dynamic> json) {
+    _datas = json['datas'] != null ? new Datas.fromJson(json['datas']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['nowPage'] = this._nowPage;
-    data['countPage'] = this._countPage;
-    data['date'] = this._date;
-    if (this._listDatas != null) {
-      data['list_datas'] = this._listDatas.map((v) => v.toJson()).toList();
+    if (this._datas != null) {
+      data['datas'] = this._datas.toJson();
     }
     return data;
   }
 }
 
-class ListDatas {
+class Datas {
   String _cid;
   String _cname;
   String _docid;
@@ -54,14 +30,15 @@ class ListDatas {
   String _author;
   String _articletype;
   String _listimgtype;
+  String _keywords;
   String _time;
   String _body;
   List<Images> _images;
   String _abs;
-  String _url;
+  String _shareurl;
   String _videourl;
 
-  ListDatas(
+  Datas(
       {String cid,
         String cname,
         String docid,
@@ -70,11 +47,13 @@ class ListDatas {
         String author,
         String articletype,
         String listimgtype,
+        String keywords,
         String time,
         String body,
+        List<Null> bodyimgs,
         List<Images> images,
         String abs,
-        String url,
+        String shareurl,
         String videourl}) {
     this._cid = cid;
     this._cname = cname;
@@ -84,11 +63,12 @@ class ListDatas {
     this._author = author;
     this._articletype = articletype;
     this._listimgtype = listimgtype;
+    this._keywords = keywords;
     this._time = time;
     this._body = body;
     this._images = images;
     this._abs = abs;
-    this._url = url;
+    this._shareurl = shareurl;
     this._videourl = videourl;
   }
 
@@ -108,6 +88,8 @@ class ListDatas {
   set articletype(String articletype) => _articletype = articletype;
   String get listimgtype => _listimgtype;
   set listimgtype(String listimgtype) => _listimgtype = listimgtype;
+  String get keywords => _keywords;
+  set keywords(String keywords) => _keywords = keywords;
   String get time => _time;
   set time(String time) => _time = time;
   String get body => _body;
@@ -116,12 +98,12 @@ class ListDatas {
   set images(List<Images> images) => _images = images;
   String get abs => _abs;
   set abs(String abs) => _abs = abs;
-  String get url => _url;
-  set url(String url) => _url = url;
+  String get shareurl => _shareurl;
+  set shareurl(String shareurl) => _shareurl = shareurl;
   String get videourl => _videourl;
   set videourl(String videourl) => _videourl = videourl;
 
-  ListDatas.fromJson(Map<String, dynamic> json) {
+  Datas.fromJson(Map<String, dynamic> json) {
     _cid = json['cid'];
     _cname = json['cname'];
     _docid = json['docid'];
@@ -130,6 +112,7 @@ class ListDatas {
     _author = json['author'];
     _articletype = json['articletype'];
     _listimgtype = json['listimgtype'];
+    _keywords = json['keywords'];
     _time = json['time'];
     _body = json['body'];
     if (json['images'] != null) {
@@ -139,7 +122,7 @@ class ListDatas {
       });
     }
     _abs = json['abs'];
-    _url = json['url'];
+    _shareurl = json['shareurl'];
     _videourl = json['videourl'];
   }
 
@@ -153,13 +136,14 @@ class ListDatas {
     data['author'] = this._author;
     data['articletype'] = this._articletype;
     data['listimgtype'] = this._listimgtype;
+    data['keywords'] = this._keywords;
     data['time'] = this._time;
     data['body'] = this._body;
     if (this._images != null) {
       data['images'] = this._images.map((v) => v.toJson()).toList();
     }
     data['abs'] = this._abs;
-    data['url'] = this._url;
+    data['shareurl'] = this._shareurl;
     data['videourl'] = this._videourl;
     return data;
   }

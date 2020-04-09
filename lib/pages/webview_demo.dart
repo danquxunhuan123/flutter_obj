@@ -76,7 +76,8 @@ class _WebViewExampleState extends State<WebViewExample> {
           },
           gestureNavigationEnabled: true,
         );
-      }),
+      }
+      ),
       floatingActionButton: favoriteButton(),
     );
   }
